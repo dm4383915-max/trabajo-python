@@ -1,3 +1,3 @@
-Codigo: 01, Nombre: leche, Precio: 2500.0, Cantidad: 65, Categoria: lacteos
-Codigo: 02, Nombre: confley, Precio: 8000.0, Cantidad: 34, Categoria: cereales
-Codigo: 03, Nombre: pollo, Precio: 8700.0, Cantidad: 12, Categoria: carnes
+Codigo: 01, Nombre: coca cola, Precio: 3200.0, Cantidad: 50, Categoria: bebidas
+Codigo: 02, Nombre: papas margarita, Precio: 4500.0, Cantidad: 28, Categoria: snacks
+Codigo: 03, Nombre: atun van camps, Precio: 6200.0, Cantidad: 15, Categoria: enlatados

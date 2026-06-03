@@ -14,6 +14,46 @@ class SistemaInventario:
     def __init__(self):
         self.productos = []
 
+    def menu(self):
+        while True:
+            print("""
+                  ============ MENU ==============
+                  1. Registrar productos
+                  2. Mostrar productos
+                  3. Buscar producto
+                  4. Actualizar producto
+                  5. Eliminar producto
+                  6. Calcular total inventario
+                  7. Mostrar productos agotados
+                  8. Guardar archivo
+                  9. Salir
+                  =================================
+                  """)
+
+            opcion = input("Seleccione una opcion: ")
+
+            if opcion == "1":
+                self.registrar_producto()
+            elif opcion == "2":
+                self.mostrar_productos()
+            elif opcion == "3":
+                self.buscar_producto()
+            elif opcion == "4":
+                self.actualizar_producto()
+            elif opcion == "5":
+                self.eliminar_producto()
+            elif opcion == "6":
+                self.calcular_total_inventario()
+            elif opcion == "7":
+                self.mostrar_agotados()
+            elif opcion == "8":
+                self.guardar_archivo()
+            elif opcion == "9":
+                print("Saliendo del sistema...")
+                break
+            else:
+                print("Opcion invalida")
+
     def registrar_producto(self):
         codigo = input("Ingrese el codigo del producto: ")
 
@@ -37,11 +77,11 @@ class SistemaInventario:
                 else:
                     print("""
                   ===== Categorias de los productos =====
-                  1. lácteos
-                  2. frutas
-                  3. verduras
-                  4. carnes
-                  5. cereales 
+                  1. bebidas
+                  2. snacks
+                  3. enlatados
+                  4. abarrotes
+                  5. lacteos 
                   6. Salir
                   =================================
                   """)
@@ -49,15 +89,15 @@ class SistemaInventario:
                     categoria = input("Ingrese la categoria del producto: ")
 
                     if categoria == "1":
-                        categoria = "lacteos"
+                        categoria = "bebidas"
                     elif categoria == "2":
-                        categoria = "frutas"
+                        categoria = "snacks"
                     elif categoria == "3":
-                        categoria = "verduras"
+                        categoria = "enlatados"
                     elif categoria == "4":
-                        categoria = "carnes"
+                        categoria = "abarrotes"
                     elif categoria == "5":
-                        categoria = "cereales"
+                        categoria = "lacteos"
                     else:
                         print("Opcion invalida")
                         continue
@@ -111,7 +151,7 @@ class SistemaInventario:
             print("Opcion invalida")
 
     def actualizar_producto(self):
-        codigo_buscar= input("Ingrese el codigo del producto a actualizar: ")
+        codigo_buscar = input("Ingrese el codigo del producto a actualizar: ")
 
         for p in self.productos:
             if p.codigo == codigo_buscar:
@@ -149,26 +189,26 @@ class SistemaInventario:
                 elif opcion == "3":
                     print("""
             ===== Categorias de los productos =====
-            1. lácteos
-            2. frutas 
-            3. verduras
-            4. carnes
-            5. cereales
+            1. bebidas
+            2. snacks 
+            3. enlatados
+            4. abarrotes
+            5. lacteos
             6. Salir
             =================================
             """)
                     categoria = input("Ingrese la nueva categoria del producto: ")
 
                     if categoria == "1":
-                        p.categoria = "lacteos"
+                        p.categoria = "bebidas"
                     elif categoria == "2":
-                        p.categoria = "frutas"
+                        p.categoria = "snacks"
                     elif categoria == "3":
-                        p.categoria = "verduras"
+                        p.categoria = "enlatados"
                     elif categoria == "4":
-                        p.categoria = "carnes"
+                        p.categoria = "abarrotes"
                     elif categoria == "5":
-                        p.categoria = "cereales"
+                        p.categoria = "lacteos"
                     else:
                         print("Opcion invalida")
                         return
@@ -177,7 +217,7 @@ class SistemaInventario:
                 else:
                     print("Opcion invalida")
                 return
-            print("Producto no encontrado")
+        print("Producto no encontrado")
 
     def eliminar_producto(self):
         codigo_eliminar = input("Ingrese el codigo del producto a eliminar: ")
@@ -191,7 +231,6 @@ class SistemaInventario:
         print("Producto no encontrado")
 
     def calcular_total_inventario(self):
-
         total = 0
 
         for p in self.productos:
@@ -203,53 +242,13 @@ class SistemaInventario:
         print("\nProductos agotados:")
         for p in self.productos:
             if p.cantidad == 0:
-                print(p.mostrar_info()) 
+                print(p.mostrar_info())
 
     def guardar_archivo(self):
         with open("inventario.txt", "w") as archivo:
             for p in self.productos:
-                  archivo.write(p.mostrar_info()+"\n")
-        print("Archivo guardado correctamente")   
-
-    def menu(self):
-        while True:
-            print("""
-                  ============ MENU ==============
-                  1. Registrar productos
-                  2. Mostrar productos
-                  3. Buscar producto
-                  4. Actualizar producto
-                  5. Eliminar producto
-                  6. Calcular total inventario
-                  7. Mostrar productos agotados
-                  8. Guardar archivo
-                  9. Salir
-                  =================================
-                  """)
-
-            opcion = input("Seleccione una opcion: ")
-
-            if opcion == "1":
-                self.registrar_producto()
-            elif opcion == "2":
-                self.mostrar_productos()
-            elif opcion == "3":
-                self.buscar_producto()
-            elif opcion == "4":
-                self.actualizar_producto()
-            elif opcion == "5":
-                self.eliminar_producto()
-            elif opcion == "6":
-                self.calcular_total_inventario()
-            elif opcion == "7":
-                self.mostrar_agotados()
-            elif opcion == "8":
-                self.guardar_archivo()
-            elif opcion == "9":
-                print("Saliendo del sistema...")
-                break
-            else:
-                print("Opcion invalida")
+                archivo.write(p.mostrar_info() + "\n")
+        print("Archivo guardado correctamente")
 
 
 sistema = SistemaInventario()
